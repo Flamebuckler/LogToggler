@@ -1,7 +1,7 @@
 <Bindings>
 	<Layer name="SI_KEYBINDINGS_LAYER_GENERAL">
 		<Category name="LogToggler">
-			<Action name="LogToggler">
+			<Action name="LT">
 				<Down>LogToggler.toggleLogs()</Down>
 			</Action>
 		</Category>

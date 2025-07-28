@@ -11,7 +11,8 @@ function LogToggler.createSettings()
         name = LogToggler.name,
         author = "@Flamebuckler",
     }
-    local panel = LAM:RegisterAddonPanel(panelName, panelData)
+    
+    LAM:RegisterAddonPanel(panelName, panelData)
 
     local optionsData = {
         {
