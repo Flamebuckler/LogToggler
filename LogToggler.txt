@@ -2,7 +2,7 @@
 ## APIVersion: 101046
 ## Description: An addon to start and deactivate the ESO encounter logs with one button
 ## Author: @Flamebuckler
-## Version: 0.1.0
+## Version: 0.2.0
 ## IsLibrary: false
 ## SavedVariables: LogToggler_Data
 ## DependsOn: LibChatMenuButton LibAddonMenu-2.0
