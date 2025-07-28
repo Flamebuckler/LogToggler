@@ -1,12 +1,12 @@
-LT = LT or {}
+LogToggler = LogToggler or {}
 
-function LT.createButton()
-    LT.button = LibChatMenuButton.addChatButton("LogTogglerChatButton", LT.buttonIcon(), LT.buttonTooltip(), function() LT.toggleLogs() end)
-    LT.updateVisibiliy()
-    LT.updateButtonIcon()
+function LogToggler.createButton()
+    LogToggler.button = LibChatMenuButton.addChatButton("LogTogglerChatButton", LogToggler.buttonIcon(), LogToggler.buttonTooltip(), function() LogToggler.toggleLogs() end)
+    LogToggler.updateVisibiliy()
+    LogToggler.updateButtonIcon()
 end
 
-function LT.toggleLogs()
+function LogToggler.toggleLogs()
     if IsEncounterLogEnabled() then
         SetEncounterLogEnabled(false)
         d("Encounter log disabled.")
@@ -15,11 +15,11 @@ function LT.toggleLogs()
         d("Encounter log enabled.")
     end
 
-    LT.button:edit({["tooltip"] = LT.buttonTooltip()})
-    LT.updateButtonIcon()
+    LogToggler.button:edit({["tooltip"] = LogToggler.buttonTooltip()})
+    LogToggler.updateButtonIcon()
 end
 
-function LT.buttonTooltip()
+function LogToggler.buttonTooltip()
     if IsEncounterLogEnabled() then
         return "Disable encounter log"
     else
@@ -27,7 +27,7 @@ function LT.buttonTooltip()
     end
 end
 
-function LT.updateButtonIcon()
+function LogToggler.updateButtonIcon()
     local logIcon = "LogToggler/imgs/log_disabled.dds"
     local logHoverIcon ="LogToggler/imgs/log_disabled_hover.dds"
 
@@ -36,18 +36,18 @@ function LT.updateButtonIcon()
         logHoverIcon ="LogToggler/imgs/log_enabled_hover.dds"
     end
 
-    LT.button:edit({["imagePath"] = logIcon})
-    LT.button:edit({["imagePathHover"] = logHoverIcon})
+    LogToggler.button:edit({["imagePath"] = logIcon})
+    LogToggler.button:edit({["imagePathHover"] = logHoverIcon})
 end
 
-function LT.buttonIcon()
+function LogToggler.buttonIcon()
     return {"LogToggler/imgs/log_disabled.dds","LogToggler/imgs/log_disabled_hover.dds"}
 end
 
-function LT.updateVisibiliy()
-    if LT.showButton then
-        LT.button:show()
+function LogToggler.updateVisibiliy()
+    if LogToggler.showButton then
+        LogToggler.button:show()
     else
-        LT.button:hide()
+        LogToggler.button:hide()
     end
 end

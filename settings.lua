@@ -1,15 +1,14 @@
-LT = LT or {}
+LogToggler = LogToggler or {}
 
-LT.showButtonDefault = true
-LT.showReminderDefault = false
+LogToggler.showButtonDefault = true
 
-function LT.createSettings()
+function LogToggler.createSettings()
     local LAM = LibAddonMenu2
-    local panelName =  LT.name.." - Options"
+    local panelName =  LogToggler.name.." - Options"
 
     local panelData = {
         type = "panel",
-        name = LT.name,
+        name = LogToggler.name,
         author = "@Flamebuckler",
     }
     local panel = LAM:RegisterAddonPanel(panelName, panelData)
@@ -19,52 +18,28 @@ function LT.createSettings()
             type = "checkbox",
             name = "Show button",
             tooltip = "Shows the chat windows button",
-            getFunc = function() return LT.getShowButton() end,
-            setFunc = function(value) LT.setShowButton(value) end
-        },
-        {
-            type = "checkbox",
-            name = "Show reminder",
-            tooltip = "Shows an activation reminder when entering a trial",
-            getFunc = function() return LT.getShowReminder() end,
-            setFunc = function(value) LT.setShowReminder(value) end
+            getFunc = function() return LogToggler.getShowButton() end,
+            setFunc = function(value) LogToggler.setShowButton(value) end
         }
     }
 
     LAM:RegisterOptionControls(panelName, optionsData)
 end
 
-function LT.loadSavedData()
-    -- ShowButtom
-    if LT.savedVars.showButton == nil then
-        LT.showButton = LT.showButtonDefault
+function LogToggler.loadSavedData()
+    if LogToggler.savedVars.showButton == nil then
+        LogToggler.showButton = LogToggler.showButtonDefault
     else
-        LT.showButton = LT.savedVars.showButton
-    end
-
-    -- showReminder
-    if LT.savedVars.showReminder == nil then
-        LT.showReminder = LT.showReminderDefault
-    else
-        LT.showReminder = LT.savedVars.showReminder
+        LogToggler.showButton = LogToggler.savedVars.showButton
     end
 end
 
--- ShowButtom
-function LT.setShowButton(value)
-    LT.showButton = value
-	LT.savedVars.showButton = value
-    LT.updateVisibiliy()
-end
-function LT.getShowButton()
-    return LT.showButton
+function LogToggler.setShowButton(value)
+    LogToggler.showButton = value
+	LogToggler.savedVars.showButton = value
+    LogToggler.updateVisibiliy()
 end
 
--- ShowReminder
-function LT.setShowReminder(value)
-    LT.showReminder = value
-	LT.savedVars.showReminder = value
-end
-function LT.getShowReminder()
-    return LT.showReminder
+function LogToggler.getShowButton()
+    return LogToggler.showButton
 end

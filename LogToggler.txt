@@ -4,12 +4,10 @@
 ## Author: @Flamebuckler
 ## Version: 0.1.0
 ## IsLibrary: false
-## SavedVariables: LT_Data
+## SavedVariables: LogToggler_Data
 ## DependsOn: LibChatMenuButton LibAddonMenu-2.0
 
 logToggler.lua
 settings.lua
 button.lua
-trialNotifier.lua
 Bindings.xml
-
