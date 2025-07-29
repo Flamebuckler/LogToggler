@@ -8,9 +8,7 @@ function OnAddOnLoaded(eventCode, addOnName)
 
     LogToggler.savedVars = ZO_SavedVars:NewAccountWide("LogToggler_Data", 1, nil, {})
 
-	table.setStringList({
-		["SI_BINDING_NAME_LT"] = "LogToggler",
-	})
+	ZO_CreateStringId("SI_BINDING_NAME_LT_TOGGLE_ENCOUNTERLOG", "LogToggler")
 
     LogToggler.loadSavedData()
     LogToggler.createButton()
