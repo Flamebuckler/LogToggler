@@ -1,8 +1,8 @@
 ## Title: LogToggler
-## APIVersion: 101046
+## APIVersion: 101048
 ## Description: An addon to start and deactivate the ESO encounter logs with one button
 ## Author: @Flamebuckler
-## Version: 0.2.1
+## Version: 0.2.2
 ## IsLibrary: false
 ## SavedVariables: LogToggler_Data
 ## DependsOn: LibChatMenuButton LibAddonMenu-2.0

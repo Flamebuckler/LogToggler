@@ -1,50 +1,61 @@
 LogToggler = LogToggler or {}
 
 function LogToggler.createButton()
-    LogToggler.button = LibChatMenuButton.addChatButton("LogTogglerChatButton", LogToggler.buttonIcon(), LogToggler.buttonTooltip(), function() LogToggler.toggleLogs() end)
-    LogToggler.updateVisibiliy()
+    local icons = LogToggler.getButtonIcons()
+    LogToggler.button = LibChatMenuButton.addChatButton(
+        "LogTogglerChatButton",
+        icons,
+        LogToggler.getButtonTooltip(),
+        function() LogToggler.toggleLogs() end
+    )
+    LogToggler.updateVisibility()
     LogToggler.updateButtonIcon()
 end
 
 function LogToggler.toggleLogs()
     if IsEncounterLogEnabled() then
         SetEncounterLogEnabled(false)
-        d("Encounter log disabled.")
+        d(LogToggler.strings.LOG_DISABLED_MSG)
     else
         SetEncounterLogEnabled(true)
-        d("Encounter log enabled.")
+        d(LogToggler.strings.LOG_ENABLED_MSG)
     end
 
-    LogToggler.button:edit({["tooltip"] = LogToggler.buttonTooltip()})
-    LogToggler.updateButtonIcon()
+    if LogToggler.button then
+        LogToggler.button:edit({ ["tooltip"] = LogToggler.getButtonTooltip() })
+        LogToggler.updateButtonIcon()
+    end
 end
 
-function LogToggler.buttonTooltip()
+function LogToggler.getButtonTooltip()
     if IsEncounterLogEnabled() then
-        return "Disable encounter log"
+        return LogToggler.strings.DISABLE_LOG
     else
-        return "Enable encounter log"
+        return LogToggler.strings.ENABLE_LOG
     end
 end
 
 function LogToggler.updateButtonIcon()
-    local logIcon = "LogToggler/imgs/log_disabled.dds"
-    local logHoverIcon ="LogToggler/imgs/log_disabled_hover.dds"
+    if not LogToggler.button then return end
 
+    local icons = LogToggler.getButtonIcons()
+    LogToggler.button:edit({
+        ["imagePath"] = icons[1],
+        ["imagePathHover"] = icons[2]
+    })
+end
+
+function LogToggler.getButtonIcons()
     if IsEncounterLogEnabled() then
-        logIcon = "LogToggler/imgs/log_enabled.dds"
-        logHoverIcon ="LogToggler/imgs/log_enabled_hover.dds"
+        return { LogToggler.ICONS.ENABLED, LogToggler.ICONS.ENABLED_HOVER }
+    else
+        return { LogToggler.ICONS.DISABLED, LogToggler.ICONS.DISABLED_HOVER }
     end
-
-    LogToggler.button:edit({["imagePath"] = logIcon})
-    LogToggler.button:edit({["imagePathHover"] = logHoverIcon})
 end
 
-function LogToggler.buttonIcon()
-    return {"LogToggler/imgs/log_disabled.dds","LogToggler/imgs/log_disabled_hover.dds"}
-end
+function LogToggler.updateVisibility()
+    if not LogToggler.button then return end
 
-function LogToggler.updateVisibiliy()
     if LogToggler.showButton then
         LogToggler.button:show()
     else

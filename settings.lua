@@ -4,14 +4,14 @@ LogToggler.showButtonDefault = true
 
 function LogToggler.createSettings()
     local LAM = LibAddonMenu2
-    local panelName =  LogToggler.name.." - Options"
+    local panelName = LogToggler.name .. " - Options"
 
     local panelData = {
         type = "panel",
         name = LogToggler.name,
         author = "@Flamebuckler",
     }
-    
+
     LAM:RegisterAddonPanel(panelName, panelData)
 
     local optionsData = {
@@ -37,8 +37,8 @@ end
 
 function LogToggler.setShowButton(value)
     LogToggler.showButton = value
-	LogToggler.savedVars.showButton = value
-    LogToggler.updateVisibiliy()
+    LogToggler.savedVars.showButton = value
+    LogToggler.updateVisibility()
 end
 
 function LogToggler.getShowButton()
